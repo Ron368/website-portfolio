@@ -1,68 +1,98 @@
 /* ========== Base & Reset ========== */
-
 * {box-sizing: border-box;}
-
 html {scroll-behavior: smooth;}
 
 :root {
-    --bg: #0b1220;
-    --panel: #0f172a;
-    --text: #e5e7eb;
-    --muted: #f2ede3;
-    --brand: #D4AF37;
-    --brand-dark: #BFA100;
-    --radius: 14px;
-    --space-1: .5rem;
-    --space-2: 1rem;
-    --space-3: 1.5rem;
-    --space-4: 2rem;
-    --space-6: 3rem;
-    --maxw: 1100px;
+  --bg: #0b1220; 
+  --panel: #0f172a; 
+  --text: #e5e7eb;
+  --muted: #f2ede3;
+  --brand: #D4AF37; 
+  --brand-dark: #BFA100;
+  --radius: 14px;
+  --space-1: .5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --maxw: 1100px;
+  --nav-hover: rgba(212,175,55,0.08);
+  --chip-border: rgba(255,255,255,0.04);
+}
+
+
+/* Light theme overrides - applied when <body> has class "light-mode" */
+body.light-mode {
+  --bg: #f6f7f8; 
+  --panel: #ffffff; 
+  --text: #0f1720; 
+  --muted: #4b5563; 
+  --brand: #0b7285; 
+  --brand-dark: #085b67; 
+  --nav-hover: rgba(11,114,133,0.06);
+  --chip-border: rgba(16,24,32,0.06);
+  background-image: none; 
+}
+
+/* ===== Light Mode: Fix Mobile Navigation Visibility ===== */
+body.light-mode nav {
+  background: rgba(255, 255, 255, 0.95); 
+}
+
+body.light-mode .nav a {
+  color: var(--text); 
+}
+
+body.light-mode .nav a:hover,
+body.light-mode .nav a:focus {
+  background: var(--nav-hover); 
+  color: var(--brand);
+}
+
+body.light-mode .hamburger span {
+  background: var(--text);
+}
+
+/* ===== Light Mode: Fix Project Buttons Visibility ===== */
+body.light-mode .btn-outline {
+  color: var(--brand);              
+  border-color: var(--brand);
+  background: transparent;          
+}
+
+body.light-mode .btn-outline:hover {
+  background: rgba(11, 114, 133, 0.08);
+  color: var(--brand-dark);             
+}
+
+/* ===== Light Mode: Fix Skill Icons Visibility ===== */
+body.light-mode #skills .chips li i {
+  color: var(--brand); /* Force icons to match brand color */
 }
 
 body {
-    margin: 0;
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--text);
-    background-color: #000000;
-    background-image: url(images/stardust.png);
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: url(images/stardust.png);
 }
 
-img {
-    max-width: 100%;
-    display: block;
-    border-radius: var(--radius);
-}
 
-a {
-    color: var(--brand);
-    text-decoration: none;
-}
+img { max-width: 100%; display: block; border-radius: var(--radius); }
 
-a:hover {
-    text-decoration: underline;
-}
 
-.highlight {
-    color: var(--brand); 
-    font-weight: bold;
-}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+
+.highlight { color: var(--brand); font-weight: bold; }
+
 
 /* Layout helpers */
-.container {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 0 var(--space-2);
-}
-
-.section {padding: var(--space-6) 0;}
-
-.section-divider {
-    height: 1px;
-    width: 50%;
-    margin: 2rem auto;
-    background: linear-gradient(to right, transparent, var(--brand), transparent);
-}
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--space-2); }
+.section { padding: var(--space-6) 0; }
+.section-divider
 
 /* Skip link for keyboard users */
 .skip-link {
@@ -317,64 +347,64 @@ img.intro-logo {
 
 /* Contact */
 #contact {
-  background: #0b0b0b;
-  text-align: center;
-  padding: 4rem 1rem;
+    background: #0b0b0b;
+    text-align: center;
+    padding: 4rem 1rem;
 }
 
 #contact-title {
-  font-size: 2.5rem;
-  color: var(--brand);
-  margin-bottom: 1rem;
+    font-size: 2.5rem;
+    color: var(--brand);
+    margin-bottom: 1rem;
 }
 
 .contact-subtitle {
-  max-width: 500px;
-  margin: 0 auto 2rem;
-  font-size: 1.1rem;
-  color: var(--muted);
-  line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.6;
 }
 
 .contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: grid;
-  gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
 }
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
-  padding: 0.9rem 1rem;
-  background: transparent;
-  border: 1px solid var(--brand);
-  color: var(--text);
-  border-radius: 6px;
-  font-size: 1rem;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    background: transparent;
+    border: 1px solid var(--brand);
+    color: var(--text);
+    border-radius: 6px;
+    font-size: 1rem;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: none;
-  box-shadow: 0 0 8px var(--brand);
+    outline: none;
+    box-shadow: 0 0 8px var(--brand);
 }
 
 .contact-btn {
-  background: transparent;
-  border: 1px solid var(--brand);
-  color: var(--brand);
-  font-weight: 600;
-  padding: 0.8rem 2rem;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    background: transparent;
+    border: 1px solid var(--brand);
+    color: var(--brand);
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .contact-btn:hover {
-  background: var(--brand);
-  color: #0b0b0b;
-  transform: scale(1.05);
+    background: var(--brand);
+    color: #0b0b0b;
+    transform: scale(1.05);
 }
 
 /* Buttons */
@@ -386,6 +416,16 @@ img.intro-logo {
     background: linear-gradient(90deg, var(--brand), var(--brand-dark));  
     font-weight: 600; 
     color: #000;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    color: var(--brand);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 15rem;
+    margin-top: 4rem;
 }
 
 .btn:hover { 
@@ -402,6 +442,70 @@ img.intro-logo {
 .btn-outline:hover { 
     background: rgba(97, 90, 16, 0.08); 
 }
+
+/* ===== Theme Toggle Button ===== */
+.theme-btn {
+  background: transparent;
+  border: 1px solid var(--brand);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, color 0.3s;
+}
+
+.theme-btn:hover {
+  background: var(--brand);
+  color: #000;
+}
+
+/* ===== Edit Button ===== */
+.edit-btn {
+  background: transparent;
+  border: 1px solid var(--brand);
+  color: var(--brand);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.edit-btn:hover {
+  background: var(--brand);
+  color: #000;
+}
+
+/* ===== Light Mode Overrides ===== */
+.light-mode a {
+  color: #0077cc;
+}
+
+.light-mode .site-header {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 2px solid #ddd;
+}
+
+.light-mode .card {
+  background: #fff;
+  border-color: #ccc;
+}
+
+.light-mode .btn {
+  color: #fff;
+  background: #0077cc;
+}
+
+.light-mode .btn-outline {
+  color: #0077cc;
+  border-color: #0077cc;
+}
+
 
 
 /* Cards */
